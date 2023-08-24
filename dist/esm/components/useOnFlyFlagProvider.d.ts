@@ -1,2 +1,2 @@
-declare const useOnFlyFlagProvider: (accountKey: string) => null[];
+declare const useOnFlyFlagProvider: (accountKey: string) => any[];
 export default useOnFlyFlagProvider;
