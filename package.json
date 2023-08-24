@@ -1,59 +1,53 @@
 {
-  "name": "onfly-feature-flag",
-  "description": "Provider to get feature flag on fly",
-  "version": "0.1.0",
-  "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-
-  "author": "Rishav Mittal",
-  "keywords": [
-    "react",
-    "components",
-    "feature flag"
-  ],
-  "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "socket.io-client": "^4.7.2",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.22.10",
-    "@babel/core": "^7.22.11",
-    "@babel/preset-env": "^7.22.10"
-  },
+  "name": "onfly-flag-provider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rishavmittal2903/reactLibrary.git" 
-}
+    "url": "git+https://github.com/rishavmittal2903/reactLibrary.git"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
+    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run prettier"
+  },
+  "keywords": [
+    "flag",
+    "react",
+    "onfly",
+    "feature",
+    "feature flag"
+  ],
+  "author": "Rishav Mittal",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^18.2.21",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "socket.io-client": "^4.7.2",
+    "typescript": "^5.1.6"
+  }
 }
